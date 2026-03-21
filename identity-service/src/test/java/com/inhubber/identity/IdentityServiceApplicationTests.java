@@ -1,4 +1,4 @@
-package com.inhubber.identityservice;
+package com.inhubber.identity;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
