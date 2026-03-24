@@ -33,6 +33,16 @@ public class AuthService {
         userRepository.save(user);
     }
 
+    public void updateEmail(String oldEmail, String newEmail) {
+        if (existsByEmail(newEmail)) {
+            throw new EmailAlreadyRegisteredException(newEmail);
+        }
+        User user = userRepository.findByEmail(oldEmail)
+                .orElseThrow(() -> new IllegalArgumentException("User not found: " + oldEmail));
+        user.updateEmail(newEmail);
+        userRepository.save(user);
+    }
+
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
